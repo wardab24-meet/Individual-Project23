@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #007BFF;
+        }
+
+        h4 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        p {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Profile</h3>
+        <h4>Welcome to our store! This is your profile where you can see what you have in your cart.</h4>
+        <p>Email: {{ email }}</p>
+        <a href="/logout">Logout</a>
+    </div>
+    <div clas= "container">
+        <a href="/shop">VIEW ITEMS</a>
+
+</body>
+</html>
+
