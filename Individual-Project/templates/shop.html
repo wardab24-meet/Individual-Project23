@@ -1,53 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Shop</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-
 <body>
-	<div class="container mt-5">
-		<h1 class="text-center">Welcome to ElectraTech!</h1>
-		<h2 class="text-center mt-4">Our Products:</h2>
-		<div class="row" id="product-container">
-			{% for product in products %}
-			<div class="col-md-4">
-				<div class="card mb-4">
-					<img src="{{ product.image }}" class="card-img-top" alt="{{ product.name }}">
-					<div class="card-body">
-						<h5 class="card-title">{{ product.name }}</h5>
-						<p class="card-text">{{ product.caption }}</p>
-						<p class="card-text font-weight-bold">${{ product.price }}</p>
-						<button class="btn btn-primary add-to-cart" data-product="{{ product.name }}">Add to Cart</button>
-					</div>
-				</div>
-			</div>
-			{% endfor %}
+	<center>
+	<h1>Welcome to ElectraTech!</h1>
+	{% for product in products %}
+	<div class="product-card">
+		<!-- Image -->
+		<form method="POST" action="/profile">
+			<input type="hidden" name="image" value="{{product['image']}}">
+			<input type="submit"><img class="product-img" src="{{ product['image'] }}">
+		</form>
+		<br><br>
+
+		<div class="product-title">
+			<!-- Product name -->
+			{{ product['name'] }}
+
+			<!-- Price -->
+			<span class="product-price">{{ product['price'] }}</span>
 		</div>
+		<br><br>
+
+		<!-- Description -->
+		<div class="product-desc">{{ product['description'] }}</div>
 	</div>
-
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<script>
-		// Cart to store selected products
-		let cart = [];
-
-		// Add event listener to all "Add to Cart" buttons
-		document.querySelectorAll(".add-to-cart").forEach((button) => {
-			button.addEventListener("click", (event) => {
-				const productName = event.target.dataset.product;
-				const product = products.find((p) => p.name === productName);
-				if (product) {
-					cart.push(product);
-					alert(`Product '${product.name}' added to cart!`);
-				}
-			});
-		});
-	</script>
+	{% endfor %}
+	</center>
 </body>
-
 </html>
